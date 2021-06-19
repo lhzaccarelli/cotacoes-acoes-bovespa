@@ -1,0 +1,24 @@
+{
+  "name": "acoes-teste",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server",
+    "cliente": "npm run serve --prefix cliente",
+    "dev": "concurrently \"npm run server\" \"npm run cliente\""
+  },
+  "author": "Laerte H Zaccarelli",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "concurrently": "^6.2.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
