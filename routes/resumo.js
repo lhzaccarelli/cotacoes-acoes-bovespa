@@ -11,7 +11,7 @@ router.get('/:codigo', async (req, res) => {
             method: 'GET',
             url: `${process.env.API_URL}/get-quotes`,
             params: {
-                symbols: codigo,
+                symbols: `${codigo}.sa`, //.sa para funcionar com o Yahoo Finance
                 region: 'BR'
             },
             headers: {
@@ -22,17 +22,30 @@ router.get('/:codigo', async (req, res) => {
 
         axios.request(options)
         .then(response => {
-            console.log(response.data.quoteResponse.result)
-            // // Original response (200) as JSON
-            // res.json(data)
-        })
-        .catch(error => console.error(error))
+            res.header({
+                'Access-Control-Allow-Origin' : '*', //CORS
+            })
+            
+            const result = response.data.quoteResponse.result
 
-        res.end()
+            if (result.length > 0) {
+                // OK - 200 response
+                res.json(result)
+            } else {
+                // Ação encontrada
+                res.status(404).send(`Ação com o código ${codigo} não foi encontrada!`)
+            }
+        })
+        .catch(error => {
+            console.error(error)
+            res.status(500).json({
+                message: 'Erro realizando a requisição.'
+            })
+        })
     } catch (error) {
         console.error(error)
         res.status(500).json({
-            message: 'Server Error'
+            message: 'Erro no servidor'
         })
     }
 })

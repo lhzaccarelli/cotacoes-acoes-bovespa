@@ -27,5 +27,5 @@ if (process.env.NODE_ENV === 'production') {
 const port = process.env.PORT || 8011
 
 app.listen(port, () => {
-    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}!`)
+    console.log(`Servidor rodando em modo ${process.env.NODE_ENV} na porta ${port}!`)
 })
