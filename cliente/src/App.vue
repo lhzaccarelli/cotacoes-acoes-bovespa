@@ -40,16 +40,19 @@ export default {
 </script>
 
 <style>
+:root {
+  --ibov-color: rgb(0, 70, 133);
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: rgb(0, 70, 133);
+  color: var(--ibov-color);
 }
 
 #title {
   padding: 2rem 1rem;
-  background-color: rgb(0, 70, 133);
+  background-color: var(--ibov-color);
   color: #fff;
   border-radius: .3rem;
   text-align: center;
@@ -88,6 +91,11 @@ export default {
 
 #resultados .card h3 span {
   font-style: italic;
+}
+
+.btn.btn-primary {
+  background-color: var(--ibov-color);
+  border-color: var(--ibov-color);
 }
 
 </style>
