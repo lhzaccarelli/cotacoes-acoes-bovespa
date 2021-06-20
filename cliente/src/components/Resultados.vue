@@ -18,7 +18,7 @@
                 <div class="row justify-content-center">
                   <!-- regularMarketChangePercent: 0.6754374 -->
                   <dt class="col-md-4">Variação</dt>
-                  <dd :class="['col-md-4', dados.regularMarketChangePercent >= 0 ? 'text-success' : 'text-danger']"><strong>{{formatPorcento(dados.regularMarketChangePercent)}}</strong></dd>
+                  <dd :class="['col-md-4', {'text-success': dados.regularMarketChangePercent > 0, 'text-danger' : dados.regularMarketChangePercent < 0}]"><strong>{{formatPorcento(dados.regularMarketChangePercent)}}</strong></dd>
                 </div>
 
                 <div class="row justify-content-center">
